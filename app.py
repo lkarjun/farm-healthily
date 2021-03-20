@@ -1,7 +1,9 @@
+from pickle import load
 from fastapi import FastAPI, File, UploadFile
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
+from fastai.vision.all import load_learner
 import uvicorn
 
 app = FastAPI()
@@ -20,4 +22,5 @@ async def create_file(file: bytes = File(...)):
 
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile = File(...)):
-    return {"filename": file.filename}
+    model = load_learner("Model\leaf-diseases-classifier.pkl")
+    return {"predicted": model.predict(file.file)}
