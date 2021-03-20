@@ -8,7 +8,11 @@
 </head>
 <body>
     <h1> Image Upload </h1>
-    <input type = 'file'> 
-    <button type="submit">Okay</button>
+    <input type = 'file' accept="image/*" id="file", style="display: none;"
+            onchange="loadFile(event)">
+    <label for="file" style="cursor: pointer;" id="choose">Choose File</label>
+    <img id = "output" width="200px">
+
 </body>
+<script src="{{ url_for('static', path='/js/main.js') }}"></script>
 </html>
