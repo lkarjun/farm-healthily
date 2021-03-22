@@ -1,4 +1,5 @@
 # from pickle import load
+from os import read
 from fastapi import FastAPI, File, UploadFile
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -23,4 +24,11 @@ async def home(request: Request):
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile = File(...)):
     print(file.filename)
+    
+    if 'image' in file.content_type:
+        contents = await file.read()
+
+        with open(file.filename, 'wb') as f:
+            f.write(contents)
+        
     return {"File": file.filename}
