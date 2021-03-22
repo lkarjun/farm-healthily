@@ -34,9 +34,32 @@
             #head1 {
               font-size: 50px;
             }
+
+            #head2{
+                font-size: 30px;
+                padding-bottom: 10px;
+            }
+
+            #head2-p{
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 40px;
+                padding-bottom: 20px;
+                
+            }
+
+            #sceUpload{
+                margin: 50px;
+                padding: 10px;
+            }
+
+            #output{
+                width: 400px;
+                height: auto;
+            }
           }
           
-          @media screen and (min-width: 800px) {
+        @media screen and (min-width: 800px) {
             #head1 {
                 font-size: 70px;
             }
@@ -44,8 +67,23 @@
             .content p{
                 font-size: 30px;
             }
+
+            #head2{
+                font-size: 50px;
+            }
+
+            #head2-p{
+                font-weight: 400;
+                font-size: 30px;
+                line-height: 80px;
+                padding-bottom: 25px;
+            }
           }
 
+          form{
+              align-items: center;
+              padding-top: 30px;
+          }
         
 
     </style>
@@ -70,16 +108,30 @@
 
     <!-- ------------Landing page ending ------------ -->
 
-
-    <div class="container">
     <!-- ------------ Image uploading part ------------ -->
-    <section>
+    <div class="container">
 
-        <form action="/uploadfile/" enctype="multipart/form-data" method="post">
-            <input name="file" type="file" id = "file" onchange="loadFile(event);" accept="image/*" style="display:none;"/>
-            <label for="file" style="cursor: pointer;" id="choose">Choose File</label>
-            <button type="submit">Upload</button>
-        </form>
+    <section style="padding-top: 40px; margin: 25px" id="secUpload">
+
+        <div style="height: 100vh;">
+
+                <h2 style="font-family: 'Roboto Slab', serif;" id="head2"> Upload a snap of your plant leaf.</h1>
+                <p id = "head2-p"> We'll help you to farm better.</p>
+
+
+                <div class="card" style="width: 16rem;">
+                    <img id = "output" style="display: none;">
+                </div>
+            
+                <form action="/uploadfile/" enctype="multipart/form-data" method="post">
+                    <input name="file" type="file" id = "file" onchange="loadFile(event);" accept="image/*" style="display:none;"/>
+                    <label for="file" style="cursor: pointer;" id="choose">Choose File</label>
+                    <br>
+                    <button type="submit" class="btn btn-primary" >Upload</button>
+                </form>
+
+
+        </div>
 
     </section>
 
@@ -88,7 +140,6 @@
     <!-- ------------ Classifying part ------------ -->
     <section>
         
-        <img id = "output" width="600px" height="300px" style="display: none;">
 
     </section>
 
@@ -100,8 +151,8 @@
 
     <!-- ---------------Footer------------ -->
 
-    </div>
 
+</div>
 
 </body>
 <script src="{{ url_for('static', path='/js/main.js') }}"></script>
