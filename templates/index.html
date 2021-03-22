@@ -6,23 +6,85 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
     <title>Image Upload</title>
-    
+
+    <style>
+        .banner{
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.50)), url("static/images/cover1.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .content{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: aliceblue;
+            font-family: 'Roboto Slab', serif;
+
+        }
+
+        
+
+    </style>
+
 </head>
 <body>
-    <h1> Image Upload </h1>
 
-    <img id = "output" width="600px" height="300px" style="display: none;">
     
-    <form action="/uploadfile/" enctype="multipart/form-data" method="post">
-        <input name="file" type="file" id = "file" onchange="loadFile(event);" accept="image/*" style="display:none;"/>
-        <label for="file" style="cursor: pointer;" id="choose">Choose File</label>
-        <button type="submit">Upload</button>
-    </form>
+        <section>
+            <div class="banner">
+                <div class="container-fluid">
+                <div class="jumbotron content text-center">
+                    <h1> Farm Healthily</h1>
+                    <p style="line-height: 50px;  font-family: 'Major Mono Display', monospace;">ate healthy food</p>
+                </div>
+                </div>
+            </div>
+        </section>
+
+    <!-- ------------Landing page ------------ -->
+   
+
+    <!-- ------------Landing page ending ------------ -->
+
+
+    <div class="container">
+    <!-- ------------ Image uploading part ------------ -->
+    <section>
+
+        <form action="/uploadfile/" enctype="multipart/form-data" method="post">
+            <input name="file" type="file" id = "file" onchange="loadFile(event);" accept="image/*" style="display:none;"/>
+            <label for="file" style="cursor: pointer;" id="choose">Choose File</label>
+            <button type="submit">Upload</button>
+        </form>
+
+    </section>
+
+    <!-- ------------Image uploading part ending ------------ -->
     
-    
-    
+    <!-- ------------ Classifying part ------------ -->
+    <section>
+        
+        <img id = "output" width="600px" height="300px" style="display: none;">
+
+    </section>
+
+    <!-- ------------classifying part ending ------------ --> 
+    <!-- ---------------Footer------------ -->
+    <footer>
+
+    </footer>
+
+    <!-- ---------------Footer------------ -->
+
+    </div>
+
 
 </body>
 <script src="{{ url_for('static', path='/js/main.js') }}"></script>
