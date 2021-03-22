@@ -16,11 +16,11 @@ async def home(request: Request):
     return templates.TemplateResponse('index.html', context={'request': request})
 
 
-@app.post("/files/")
-async def create_file(file: bytes = File(...)):
-    return {"file_size": len(file)}
+# @app.post("/files/")
+# async def create_file(file: bytes = File(...)):
+#     return {"file_size": len(file)}
 
-# @app.post("/uploadfile/")
-# async def create_upload_file(file: UploadFile = File(...)):
-#     model = load_learner("Model\leaf-diseases-classifier.pkl")
-#     return {"predicted": model.predict(file.file)}
+@app.post("/uploadfile/")
+async def create_upload_file(file: UploadFile = File(...)):
+    print(file.filename)
+    return {"File": file.filename}
