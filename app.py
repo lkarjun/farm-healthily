@@ -4,7 +4,7 @@ from fastapi import FastAPI, File, UploadFile
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
-# from fastai.vision import load_learner
+from fastai.vision.all import Path
 import uvicorn
 
 app = FastAPI()
@@ -28,7 +28,7 @@ async def create_upload_file(file: UploadFile = File(...)):
     if 'image' in file.content_type:
         contents = await file.read()
 
-        with open(file.filename, 'wb') as f:
+        with open(Path.cwd()/f"static/images/{file.filename}", 'wb') as f:
             f.write(contents)
         
     return {"File": file.filename}
