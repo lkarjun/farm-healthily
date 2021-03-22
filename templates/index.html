@@ -8,10 +8,15 @@
 </head>
 <body>
     <h1> Image Upload </h1>
-    <input type = 'file' accept="image/*" id="file", style="display: none;"
-            onchange="loadFile(event)">
-    <label for="file" style="cursor: pointer;" id="choose">Choose File</label>
+    
     <img id = "output" width="200px">
+    
+    <form action="/uploadfile/" enctype="multipart/form-data" method="post">
+        <input name="file" type="file" id = "file" onchange="loadFile(event);" accept="image/*" style="display:none;"/>
+        <label for="file" style="cursor: pointer;" id="choose">Choose File</label>
+        <button type="submit">Upload</button>
+    </form>
+    
 
 </body>
 <script src="{{ url_for('static', path='/js/main.js') }}"></script>
