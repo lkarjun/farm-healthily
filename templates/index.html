@@ -8,14 +8,16 @@
 </head>
 <body>
     <h1> Image Upload </h1>
-    
-    <img id = "output" width="200px">
+
+    <img id = "output" width="600px" height="300px" style="display: none;">
     
     <form action="/uploadfile/" enctype="multipart/form-data" method="post">
         <input name="file" type="file" id = "file" onchange="loadFile(event);" accept="image/*" style="display:none;"/>
         <label for="file" style="cursor: pointer;" id="choose">Choose File</label>
         <button type="submit">Upload</button>
     </form>
+    
+    
     
 
 </body>
