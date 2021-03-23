@@ -20,8 +20,6 @@ def download_model():
         url = 'https://drive.google.com/uc?id=10CP_4IkQLpcIEDvRjKvJU2BJx7wKMTDz&export=download'
         urlretrieve(url,'export.pkl')
 
-download_model()
-
 def predict(filename: str):
     '''classifying image.'''
     model = load_learner("")
@@ -32,6 +30,7 @@ def predict(filename: str):
 
 @app.get("/")
 async def home(request: Request):
+    download_model()
     return templates.TemplateResponse('index.html', context={'request': request})
 
 
