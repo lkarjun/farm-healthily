@@ -22,8 +22,8 @@ def download_model():
 
 def predict(filename: str):
     '''classifying image.'''
-    model = load_learner("")
-    img = open_image(filename)
+    model = load_learner("export.pkl")
+    img = PILImage.create(filename)
     pred_class, pred_idx = model.predict(img)
     return str(pred_class)
 
@@ -40,12 +40,13 @@ async def home(request: Request):
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile = File(...)):
     print(file.filename)
+    path = f"static/images/{file.filename}"
     
     if 'image' in file.content_type:
         contents = await file.read()
 
-        with open(f"static/images/{file.filename}", 'wb') as f:
+        with open(path, 'wb') as f:
             f.write(contents)
         
         # prediction = predict(f'static/images/{file.filename}')
-    return {"File": file.filename, "predicted": 'Null'}
+    return {"File": file.filename, "predicted": predict(path)}
