@@ -6,4 +6,4 @@ aiofiles
 requests
 uvicorn
 python-multipart
-fastai==2.2.4
+fastai==1.0.61
