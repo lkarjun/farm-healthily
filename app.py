@@ -5,7 +5,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
 from os import path
-from fastai.vision.all import open_image, load_learner
+from fastai.vision.all import PILImage, load_learner
 from urllib.request import urlretrieve
 
 app = FastAPI()
