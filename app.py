@@ -30,7 +30,6 @@ def predict(filename: str):
 
 @app.get("/")
 async def home(request: Request):
-    download_model()
     return templates.TemplateResponse('index.html', context={'request': request})
 
 
@@ -48,5 +47,5 @@ async def create_upload_file(file: UploadFile = File(...)):
         with open(f"static/images/{file.filename}", 'wb') as f:
             f.write(contents)
         
-        prediction = predict(f'static/images/{file.filename}')
-    return {"File": file.filename, "predicted": prediction}
+        # prediction = predict(f'static/images/{file.filename}')
+    return {"File": file.filename, "predicted": 'Null'}
