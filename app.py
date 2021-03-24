@@ -1,9 +1,8 @@
-from os import read
 from fastapi import FastAPI, File, UploadFile
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
-from os import path
+from os import path, remove
 from fastai.vision.all import PILImage, load_learner, Path
 from urllib.request import urlretrieve
 
@@ -46,5 +45,6 @@ async def create_upload_file(file: UploadFile = File(...)):
         with open(path, 'wb') as f:
             f.write(contents)
         
-        # prediction = predict(f'static/images/{file.filename}')
-    return {"File": file.filename, "predicted": predict(path)}
+        prediction = predict(path)
+        remove(path)
+    return {"File": file.filename, "predicted": prediction}
