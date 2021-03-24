@@ -4,7 +4,7 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
 from os import path
-from fastai.vision.all import PILImage, load_learner
+from fastai.vision.all import PILImage, load_learner, Path
 from urllib.request import urlretrieve
 
 app = FastAPI()
@@ -16,14 +16,15 @@ templates = Jinja2Templates(directory='templates')
 def download_model():
     '''Model downloading from google drive.'''
     if path.exists('export.pkl') == False:
-        url = 'https://drive.google.com/uc?id=10CP_4IkQLpcIEDvRjKvJU2BJx7wKMTDz&export=download'
+        url = 'https://github.com/lkarjun/fastai-workouts/blob/master/models/leaf-diseases-classifier-v2.pkl?raw=true'
         urlretrieve(url,'export.pkl')
 
 def predict(filename: str):
     '''classifying image.'''
-    model = load_learner("export.pkl")
+    download_model()
+    model = load_learner('export.pkl')
     img = PILImage.create(filename)
-    pred_class, pred_idx = model.predict(img)
+    pred_class, pred_idx, ful_tensor = model.predict(img)
     return str(pred_class)
 
 
