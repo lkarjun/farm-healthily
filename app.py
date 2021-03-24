@@ -1,4 +1,3 @@
-# from pickle import load
 from os import read
 from fastapi import FastAPI, File, UploadFile
 from fastapi.staticfiles import StaticFiles
