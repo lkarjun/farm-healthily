@@ -34,10 +34,11 @@ async def home(request: Request):
     return templates.TemplateResponse('index.html', context={'request': request})
 
 
-@app.post("/uploadfile/")
+@app.post("/uploadfile")
 async def create_upload_file(file: UploadFile = File(...)):
     '''Uploading file'''
     path = f"static/images/{file.filename}"
+    print(file.filename)
     
     if 'image' in file.content_type:
         contents = await file.read()
@@ -46,5 +47,6 @@ async def create_upload_file(file: UploadFile = File(...)):
             f.write(contents)
         
         prediction = predict(path)
+        print(prediction)
         remove(path)
     return {"File": file.filename, "predicted": prediction}
