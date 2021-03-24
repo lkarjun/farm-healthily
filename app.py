@@ -21,8 +21,9 @@ def download_model():
 
 def predict(filename: str):
     '''classifying image.'''
-    download_model()
-    model = load_learner('export.pkl')
+    # download_model()
+    model = load_learner(Path.cwd()/'../models/leaf-diseases-classifier-v2.pkl')
+    # model = load_learner("export.pkl")
     img = PILImage.create(filename)
     pred_class, pred_idx, ful_tensor = model.predict(img)
     return str(pred_class)
@@ -30,16 +31,13 @@ def predict(filename: str):
 
 @app.get("/")
 async def home(request: Request):
+    '''home page'''
     return templates.TemplateResponse('index.html', context={'request': request})
 
 
-# @app.post("/files/")
-# async def create_file(file: bytes = File(...)):
-#     return {"file_size": len(file)}
-
 @app.post("/uploadfile/")
 async def create_upload_file(file: UploadFile = File(...)):
-    print(file.filename)
+    '''Uploading file'''
     path = f"static/images/{file.filename}"
     
     if 'image' in file.content_type:
