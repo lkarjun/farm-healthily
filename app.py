@@ -21,9 +21,9 @@ def download_model():
 
 def predict(filename: str):
     '''classifying image.'''
-    download_model()
-    # model = load_learner(Path.cwd()/'../models/leaf-diseases-classifier-v2.pkl')
-    model = load_learner("export.pkl")
+    # download_model()
+    model = load_learner(Path.cwd()/'../models/leaf-diseases-classifier-v2.pkl')
+    # model = load_learner("export.pkl")
     img = PILImage.create(filename)
     pred_class, pred_idx, ful_tensor = model.predict(img)
     return str(pred_class)
