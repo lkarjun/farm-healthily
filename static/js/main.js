@@ -7,3 +7,5 @@ var loadFile = function(event){
     
     image.src = URL.createObjectURL(event.target.files[0]);
 }
+
+

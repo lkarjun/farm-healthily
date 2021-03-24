@@ -1,0 +1,95 @@
+
+        .banner{
+            width: 100%;
+            height: 100vh;
+            background-image: linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.50)), url("../images/cover1.jpg");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .content{
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: aliceblue;
+            font-family: 'Roboto Slab', serif;
+
+        }
+
+        @media screen and (min-width: 400px) {
+            #head1 {
+              font-size: 50px;
+            }
+
+            #head2{
+                font-size: 30px;
+                padding-bottom: 10px;
+            }
+
+            #head2-p{
+                font-weight: 400;
+                font-size: 20px;
+                line-height: 40px;
+                padding-bottom: 20px;
+                
+            }
+
+            #sceUpload{
+                margin: 50px;
+                padding: 10px;
+            }
+
+            #output{
+                width: 400px;
+                height: auto;
+            }
+          }
+          
+        @media screen and (min-width: 800px) {
+            #head1 {
+                font-size: 70px;
+            }
+
+            .content p{
+                font-size: 30px;
+            }
+
+            #head2{
+                font-size: 50px;
+            }
+
+            #head2-p{
+                font-weight: 400;
+                font-size: 30px;
+                line-height: 80px;
+                padding-bottom: 25px;
+            }
+          }
+
+          form{
+              align-items: center;
+              padding-top: 30px;
+          }
+        
+          .preloader {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom:0;
+                right:0;
+                width: 100%;
+                height: 100vh;
+                z-index: 99999999;
+                background-image: url('../images/Infinity-1s-200px.gif'); /* your icon gif file path */
+                background-repeat: no-repeat;
+                background-color: #FFF;
+                background-position: center;
+}
+
+        #stop-scrolling {
+        height: 100% !important;
+        overflow: hidden !important;
+        }
+
+        

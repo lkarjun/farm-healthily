@@ -10,119 +10,30 @@
     <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
     <link rel="icon" type="image/png" sizes="32x32" href="static/images/favicon.ico">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/style.css') }}">
     <title>Farm Healthily</title>
 
-    <style>
-        .banner{
-            width: 100%;
-            height: 100vh;
-            background-image: linear-gradient(rgba(0,0,0,0.50), rgba(0,0,0,0.50)), url("static/images/cover1.jpg");
-            background-size: cover;
-            background-position: center;
-        }
-
-        .content{
-            width: 100%;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            color: aliceblue;
-            font-family: 'Roboto Slab', serif;
-
-        }
-
-        @media screen and (min-width: 400px) {
-            #head1 {
-              font-size: 50px;
-            }
-
-            #head2{
-                font-size: 30px;
-                padding-bottom: 10px;
-            }
-
-            #head2-p{
-                font-weight: 400;
-                font-size: 20px;
-                line-height: 40px;
-                padding-bottom: 20px;
-                
-            }
-
-            #sceUpload{
-                margin: 50px;
-                padding: 10px;
-            }
-
-            #output{
-                width: 400px;
-                height: auto;
-            }
-          }
-          
-        @media screen and (min-width: 800px) {
-            #head1 {
-                font-size: 70px;
-            }
-
-            .content p{
-                font-size: 30px;
-            }
-
-            #head2{
-                font-size: 50px;
-            }
-
-            #head2-p{
-                font-weight: 400;
-                font-size: 30px;
-                line-height: 80px;
-                padding-bottom: 25px;
-            }
-          }
-
-          form{
-              align-items: center;
-              padding-top: 30px;
-          }
-        
-          .preloader {
-                position: absolute;
-                top: 0;
-                left: 0;
-                bottom:0;
-                right:0;
-                width: 100%;
-                height: 100vh;
-                z-index: 99999999;
-                background-image: url('{{ url_for("static", path="/images/Infinity-1s-200px.gif") }}'); /* your icon gif file path */
-                background-repeat: no-repeat;
-                background-color: #FFF;
-                background-position: center;
-}
-
-        #stop-scrolling {
-        height: 100% !important;
-        overflow: hidden !important;
-        }
-    </style>
 
 </head>
+
 <body id="stop-scrolling">
 
     <div class="preloader"></div>
     
     <script>
+
         function preloaderFadeOutInit(){
                 $('.preloader').fadeOut('slow');
                 $('body').attr('id','');
             }
-// Window load function
+        
+        // Window load function
         jQuery(window).on('load', function () {
             (function ($) {
                 preloaderFadeOutInit();
             })(jQuery);
             });
+
     </script>
     
     <section>
@@ -171,23 +82,22 @@
     </section>
 
     <!-- ------------Image uploading part ending ------------ -->
-    
-    <!-- ------------ Classifying part ------------ -->
-    <section>
-        
+</div>
 
-    </section>
-
-    <!-- ------------classifying part ending ------------ --> 
     <!-- ---------------Footer------------ -->
-    <footer>
-
+    <footer class="ftco-footer ftco-bg-dark ftco-section" style="background-color:rgb(65, 65, 65); color: white;">
+        <div class="container">
+        <div class="row">
+        <div class="col-md-12 text-center">
+            <p style="padding-top: 15px;">
+          Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made with ❤ by <a>LKA</a>
+        </p>
+        </div>
+        </div>
+        </div>
     </footer>
 
     <!-- ---------------Footer------------ -->
-
-
-</div>
 
 </body>
 <script src="{{ url_for('static', path='/js/main.js') }}"></script>
