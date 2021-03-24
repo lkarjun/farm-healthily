@@ -118,16 +118,13 @@
                 <h2 style="font-family: 'Roboto Slab', serif;" id="head2"> Upload a snap of your plant leaf.</h1>
                 <p id = "head2-p"> We'll help you to farm better.</p>
 
-
-                <div class="card" style="width: 16rem;">
-                    <img id = "output" style="display: none;">
-                </div>
+                <img id = "output" style="display: none;">
             
                 <form action="/uploadfile/" enctype="multipart/form-data" method="post">
-                    <input name="file" type="file" id = "file" onchange="loadFile(event);" accept="image/*" style="display:none;"/>
-                    <label for="file" style="cursor: pointer;" id="choose">Choose File</label>
+                    <input name="file" type="file" id = "file" onchange="loadFile(event);" accept="image/*" style="display:none;" required/>
+                    <label for="file" style="cursor: pointer;" id="choose" >Choose File</label>
                     <br>
-                    <button type="submit" class="btn btn-primary" >Upload</button>
+                    <button type="submit" class="btn btn-primary" style="display: none;" id = "upload">Upload</button>
                 </form>
 
 
