@@ -4,7 +4,6 @@ var loadFile = function(event){
     document.getElementById("displayImagediv").style="display: inline"
     document.getElementById("output").style="display: block"
     document.getElementById("upload").style="display: block"
-    
     image.src = URL.createObjectURL(event.target.files[0]);
 }
 
