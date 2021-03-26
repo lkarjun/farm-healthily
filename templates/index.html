@@ -57,7 +57,7 @@
 
     <section style="padding-top: 40px; margin: 25px" id="secUpload">
 
-        <div style="height: 100vh;">
+        <div style="height: auto;">
 
                 <h2 style="font-family: 'Roboto Slab', serif;" id="head2"> Upload a snap of your plant leaf.</h1>
                 <p id = "head2-p"> We'll help you to farm better.</p>
@@ -76,6 +76,11 @@
                     <button type="button" class="btn btn-primary mx-auto" style="display: none;" id = "upload">Upload</button>
                 </form>
 
+                <div class="text-center" id = "spinner" style="display: none;">
+                    <div class="spinner-border text-primary" role="status"></div>
+                </div>
+
+                <p id='predicted' class = "text-center" style="text-align: center;"></p>
 
         </div>
 
@@ -107,6 +112,9 @@
 
 $(function() {
     $('#upload').click(function() {
+        document.getElementById("upload").style="display: none";
+        document.getElementById('spinner').style = "display: block";
+        
         var form_data = new FormData($('#upload-file')[0]);
         console.log(form_data);
         $.ajax({
@@ -117,9 +125,11 @@ $(function() {
             cache: false,
             processData: false,
             success: function(data) {
-                console.log("request posted")
-                // alert("Okay");
-                // window.location.reload();
+                console.log("request posted");
+                console.log(data);
+                document.getElementById('predicted').style = "font-weight: 500";
+                document.getElementById('spinner').style = "display: none";
+                document.getElementById('predicted').innerHTML = "Its seems like: " + data.predicted;
             },
         });
     });
