@@ -77,6 +77,12 @@
                 
             
                 <form id = 'upload-file' method="post" enctype="multipart/form-data">
+                    <label>Plant: </label>
+                    <select id="select">
+                        <option value="tomato" selected>Tomato</option>
+                        <option value="grapes"> grapes </option>
+                    </select>
+
                     <input name="file" type="file" id = "file" onchange="loadFile(event);" accept="image/*" style="display:none;" required/>
                     <label for="file" style="cursor: pointer;" id="choose" class="btn btn-success btn-rounded">Choose File</label>
                     <br>
@@ -121,7 +127,9 @@ $(function() {
         document.getElementById("upload").style="display: none";
         document.getElementById('spinner').style = "display: block";
         
+        var plant = $("#select").val()
         var form_data = new FormData($('#upload-file')[0]);
+        form_data.append('plant', plant);
         console.log(form_data);
         $.ajax({
             type: 'POST',
