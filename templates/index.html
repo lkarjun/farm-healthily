@@ -78,10 +78,12 @@
             
                 <form id = 'upload-file' method="post" enctype="multipart/form-data">
                     <label>Plant: </label>
-                    <select id="select">
+                    <select id="select" class="form-select" aria-label="Default select example" style="max-width: 50%; min-width: 40%;">
                         <option value="tomato" selected>Tomato</option>
                         <option value="grapes"> grapes </option>
                     </select>
+
+                    <br><br>
 
                     <input name="file" type="file" id = "file" onchange="loadFile(event);" accept="image/*" style="display:none;" required/>
                     <label for="file" style="cursor: pointer;" id="choose" class="btn btn-success btn-rounded">Choose File</label>
