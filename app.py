@@ -1,4 +1,4 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, Form
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from starlette.requests import Request
@@ -35,10 +35,10 @@ async def home(request: Request):
 
 
 @app.post("/uploadfile")
-async def create_upload_file(file: UploadFile = File(...)):
+async def create_upload_file(file: UploadFile = File(...), plant = Form(...)):
     '''Uploading file'''
     path = f"static/images/{file.filename}"
-    print(file.filename)
+    print(file.filename, "Requested plant classifier " + plant)
     
     if 'image' in file.content_type:
         contents = await file.read()
