@@ -43,9 +43,11 @@
     
         <div class="jumbotron text-center content">
             <div class="content">
-                <h1 class="display-4"> Farm Healthily</h1>
-                <p style="line-height: 50px;  font-family: 'Major Mono Display', monospace;" class="lead">ate healthy food</p>
-
+                <h1 class="display-3"> Farm Healthily</h1>
+                <p style="line-height: 20px;  font-family: 'Major Mono Display', monospace;" class="lead">produce healthy product</p>
+                <p class="lead" style=" font-family: 'Major Mono Display', monospace;">ate healthy food</p>
+                <p class="rainbow-text font-weight-light">(AI powerd)</p>
+                <button class="btn-rounded btn btn-success"><a href="#classify" class="text-white">Get Started</a></button>
             </div>
             
         </div>
@@ -53,7 +55,7 @@
     <!-- ------------Landing page ending ------------ -->
 
     <!-- ------------ Image uploading part ------------ -->
-    <section class="m-4 p-4" style="background-color: rgb(238, 238, 238);">
+    <section class="m-4 p-4" style="background-color: rgb(238, 238, 238);" id = "classify">
 
         <div class="container">
     
@@ -70,7 +72,7 @@
                         <div class="card mx-auto" style="max-width: 30rem;">
                             <img id = "output" class="card-img-top">
                             <div class="card-body" id = "predicted_display" style="display: none;">
-                                <p class="card-text lead" id = "predicted">
+                                <p class="card-text lead text-center" id = "predicted">
                                 </p>
                               </div>
                         </div>
