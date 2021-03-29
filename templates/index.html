@@ -160,7 +160,7 @@ $(function() {
                 console.log(data);
                 document.getElementById('predicted_display').style = "display: block"
                 document.getElementById('spinner').style = "display: none";
-                document.getElementById('predicted').innerHTML = "Its seems like: " + data.predicted;
+                document.getElementById('predicted').innerHTML = "Detected that "+plant+" leaf is a " + data.predicted + " leaf.";
                 document.getElementById('selector').style = "display: none"
                 document.getElementById('classify-again').style = 'display: block';
             },
