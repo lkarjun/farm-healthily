@@ -12,16 +12,17 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory='templates')
 
 
-def download_model():
+def download_model(plant: str):
     '''Model downloading from google drive.'''
+    models_plant = {'tomato': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/tomato.pkl?raw=true'}
     if path.exists('export.pkl') == False:
-        url = 'https://github.com/lkarjun/fastai-workouts/blob/master/models/leaf-diseases-classifier-v2.pkl?raw=true'
+        url = models_plant[plant]
         urlretrieve(url,'export.pkl')
 
-def predict(filename: str):
+def predict(filename: str, plant: str):
     '''classifying image.'''
-    # download_model()
-    model = load_learner(Path.cwd()/'../models/leaf-diseases-classifier-v2.pkl')
+    # download_model(plant)
+    model = load_learner(Path.cwd()/'../models/export.pkl')
     # model = load_learner("export.pkl")
     img = PILImage.create(filename)
     pred_class, pred_idx, ful_tensor = model.predict(img)
@@ -46,7 +47,7 @@ async def create_upload_file(file: UploadFile = File(...), plant = Form(...)):
         with open(path, 'wb') as f:
             f.write(contents)
         
-        prediction = predict(path)
+        prediction = predict(path, plant)
         print(prediction)
         remove(path)
     return {"File": file.filename, "predicted": prediction}
