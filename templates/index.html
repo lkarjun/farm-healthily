@@ -65,37 +65,47 @@
 
                 <hr class="mt-2 mb-3"/>
 
-                <div style="display: none;" id="displayImagediv">
-                    <div class="card mx-auto" style="max-width: 30rem;">
-                        <img id = "output" class="card-img-top">
-                        <div class="card-body" id = "predicted_display" style="display: none;">
-                            <p class="card-text lead" id = "predicted">
-                            </p>
-                          </div>
+                <div class="col-md-12 col-12 col-sm-12 col-lg-12 pb-4">
+                    <div style="display: none;" id="displayImagediv">
+                        <div class="card mx-auto" style="max-width: 30rem;">
+                            <img id = "output" class="card-img-top">
+                            <div class="card-body" id = "predicted_display" style="display: none;">
+                                <p class="card-text lead" id = "predicted">
+                                </p>
+                              </div>
+                        </div>
                     </div>
                 </div>
                 
             
                 <form id = 'upload-file' method="post" enctype="multipart/form-data">
-                    <label>Plant: </label>
-                    <select id="select" class="form-select" aria-label="Default select example" style="max-width: 50%; min-width: 40%;">
-                        <option value="tomato" selected>Tomato</option>
-                        <option value="grapes"> grapes </option>
-                    </select>
+                    <div class="row">
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-12">
+                            <label class="text-success display-10">Plant : </label>
+                    
+                            <select id="select" class="form-select pt-1" aria-label="Default select example" style="max-width: 50%; min-width: 40%;">
+                                <option value="tomato" selected>Tomato</option>
+                                <option value="grapes"> Grapes </option>
+                            </select>
+                        
+                        </div>
 
-                    <br><br>
+                        <div class="col-sm-6 col-md-6 col-lg-6 col-12 pt-4">
 
-                    <input name="file" type="file" id = "file" onchange="loadFile(event);" accept="image/*" style="display:none;" required/>
-                    <label for="file" style="cursor: pointer;" id="choose" class="btn btn-success btn-rounded">Choose File</label>
-                    <br>
-                    <button type="button" class="btn-rounded btn btn-success mx-auto" style="display: none;" id = "upload">Upload</button>
+                            <input name="file" type="file" id = "file" onchange="loadFile(event);" accept="image/*" style="display:none;" required/>
+                            <label for="file" style="cursor: pointer;" id="choose" class="btn btn-success btn-rounded">Choose File</label>
+                            <button type="button" class="btn-rounded btn btn-success" style="display: none;" id = "upload">Upload</button>
+                            
+                            <div id = "spinner" style="display: none;">
+                                <div class="spinner-border text-success" role="status"></div>
+                            </div>
+                        
+                        </div>
+
+                    </div>
                 </form>
 
 
-
-                <div id = "spinner" class="text-center" style="display: none;">
-                    <div class="spinner-border text-success" role="status"></div>
-                </div>
 
         </div>
 
