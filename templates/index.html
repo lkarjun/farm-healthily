@@ -60,18 +60,45 @@
     <section class="p-3 m-4">
         <div class="container">
             <div class="jumbotron text-center">
-                <div class="display-6" style="font-family: 'Roboto Slab', serif; 
-                text-decoration-line: overline underline;
-                text-decoration-style: double; 
-                text-decoration-color: rgb(58, 58, 58);">
+                <div class="display-6" style="font-family: 'Roboto Slab', serif;">
                 Why Farm Healthily ?</div>
 
                 <p class="lead pt-3">We find that every famers are facing different different problem about their plant.</p>
             </div>
+
+            <br><hr>
         </div>
     </section>
 
     <!-- about part ending -->
+
+
+    <section class="p-2 m-3 pb-3 mb-4">
+        <div class="container">
+
+            <div class="jumbotron text-center">
+                <div class="display-6" style="font-family: 'Roboto Slab', serif;">
+                Bacteria in plant leaf affect the fruit.</div>
+                
+                        <div class="card mx-auto pt-5" style="max-width: 25rem;">
+                            <img id = "output" class="card-img-top" src="{{ url_for('static', path='/images/tomato.jpg') }}">
+                        </div>
+        
+
+    
+                        <p class="lead pt-5 pl-5 pr-5" style="text-align: left;">
+                        Bacterial spot reduces tomato yield and quality by defoliation and spotting of fruit.
+                        Bacterial spot is also a serious disease of pepper.
+                        The bacteria survive on diseased plant debris and on tomato seed.
+                        Leaves, stems and fruit may be infected at any growth stage when 
+                        plants are wet and temperatures range from 75 F to 86 F. </p>
+                </div>
+                
+            </div>
+
+        <br><hr>
+
+    </section>
 
 
     <!-- ------------ Image uploading part ------------ -->
@@ -109,6 +136,7 @@
                                 <option value="tomato" selected>Tomato</option>
                                 <option value="grapes"> Grapes </option>
                                 <option value="potato">Potato</option>
+                                <option value="strawberry">Strawberry</option>
                             </select>
                         
                         </div>
