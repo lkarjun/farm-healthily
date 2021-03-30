@@ -6,5 +6,8 @@ jinja2
 aiofiles
 requests
 uvicorn
+gunicorn==19.9.0
 python-multipart
 fastai==2.2.4
+uvloop
+httptools

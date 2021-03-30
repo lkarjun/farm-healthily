@@ -15,7 +15,9 @@ templates = Jinja2Templates(directory='templates')
 def download_model(plant: str):
     '''Model downloading from google drive.'''
     models_plant = {'tomato': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/tomato.pkl?raw=true',
-                    'grapes': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/grapes.pkl?raw=true'}
+                    'grapes': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/grapes.pkl?raw=true',
+                    'potato': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/potato.pkl?raw=true',
+                    'strawberry': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/Strawberry.pkl?raw=true'}
 
     if path.exists(f'{plant}.pkl') == False:
         url = models_plant[plant]
