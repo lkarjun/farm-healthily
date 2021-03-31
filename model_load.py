@@ -2,7 +2,6 @@ from fastai.vision.all import PILImage, load_learner, Path
 from os import path, remove
 from urllib.request import urlretrieve
 
-
 class LoadModel:
 
     def download_model(self, plant: str):
@@ -18,11 +17,12 @@ class LoadModel:
 
     def predict(self, filename: str, plant: str):
         '''classifying image.'''
-        print("-------------downloading-------------")
-        self.download_model(plant)
-        print("-------------downloaded-------------")
-        # model = load_learner(Path.cwd()/'../models/export.pkl')
-        model = load_learner(f"{plant}.pkl")
+        print("-------------model loading-------------")
+        # self.download_model(plant)
+        model = load_learner(Path.cwd()/'../models/export.pkl')
+        print("-------------model loaded-------------")
+        
+        # model = load_learner(f"{plant}.pkl")
         img = PILImage.create(filename)
         pred_class, pred_idx, ful_tensor = model.predict(img)
         return str(pred_class)

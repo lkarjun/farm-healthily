@@ -1,6 +1,7 @@
 from fastapi import FastAPI, File, UploadFile, Form, Request, BackgroundTasks
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
+from time import sleep
 
 app = FastAPI()
 app.mount("/static", StaticFiles(directory="static"), name="static")
@@ -35,7 +36,14 @@ async def create_upload_file(file: UploadFile = File(...), plant = Form(...)):
         with open(path, 'wb') as f:
             f.write(contents)
         
-        prediction = model.predict(filename = path, plant = plant)
+        try:
+            prediction = model.predict(filename = path, plant = plant)
+        except:
+            print("-----------------Putting sleep mode----------------")
+            sleep(4)
+            print("-----------------Offing sleep mode----------------")
+            prediction = model.predict(filename = path, plant = plant)
+        
         print(prediction)
         model.remove_it(path)
     return {"File": file.filename, "predicted": prediction}
