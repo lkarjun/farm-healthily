@@ -11,11 +11,13 @@ templates = Jinja2Templates(directory='templates')
 model = None
 
 def model_load():
-    print("-------------importing module Loaded-------------")
+    print("-------------importing module-------------")
     global model
     from model_load import LoadModel
     model = LoadModel()
     print("-------------Importing completed-------------")
+
+
 
 @app.get("/")
 async def home(request: Request, bg_task: BackgroundTasks):
@@ -40,7 +42,7 @@ async def create_upload_file(file: UploadFile = File(...), plant = Form(...)):
             prediction = model.predict(filename = path, plant = plant)
         except:
             print("-----------------Putting sleep mode----------------")
-            sleep(4)
+            sleep(5)
             print("-----------------Offing sleep mode----------------")
             prediction = model.predict(filename = path, plant = plant)
         
