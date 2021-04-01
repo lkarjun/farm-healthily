@@ -113,6 +113,12 @@
                     </div>
                 </form>
 
+                <div class="pt-2 mt-2" style="display: none;" id='alert-on-falied'>
+                    <div class=" alert alert-danger" role="alert">
+                        <strong>Extremely Sorry!</strong> We're facing some server issues. We requested you to come after 2 minutes. Or click the below button.
+                    </div>
+                </div>
+
                 <button class="btn btn-primary btn-rounded mx-auto" id="classify-again" style="display: none;" onclick="window.location.reload()">
                     Classify Again
                 </button>
@@ -169,6 +175,12 @@ $(function() {
                 document.getElementById('selector').style = "display: none"
                 document.getElementById('classify-again').style = 'display: block';
             },
+            error: function(err){
+                document.getElementById('spinner').style = "display: none";
+                document.getElementById('classify-again').style = 'display: block';
+                document.getElementById('classify-again').innerHTML = "Try Again";
+                document.getElementById('alert-on-falied').style = 'display: block'
+            }
         });
     });
 });
