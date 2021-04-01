@@ -17,6 +17,8 @@ def model_load():
     model = LoadModel()
     print("-------------Importing completed-------------")
 
+
+
 @app.get("/")
 async def home(request: Request, bg_task: BackgroundTasks):
     '''home page'''
