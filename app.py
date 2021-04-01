@@ -11,11 +11,21 @@ templates = Jinja2Templates(directory='templates')
 model = None
 
 def model_load():
-    print("-------------importing module Loaded-------------")
+    print("-------------importing modules-------------")
     global model
     from model_load import LoadModel
     model = LoadModel()
     print("-------------Importing completed-------------")
+
+
+def predicting(filename, plant):
+    '''using recrusive function wait until background process over.'''
+    try:
+        return model.predict(filename, plant)
+    except:
+        print("-------------Module Not Loadded-------------")
+        sleep(1)
+        return predicting(filename, plant)
 
 @app.get("/")
 async def home(request: Request, bg_task: BackgroundTasks):
@@ -36,14 +46,8 @@ async def create_upload_file(file: UploadFile = File(...), plant = Form(...)):
         with open(path, 'wb') as f:
             f.write(contents)
         
-        try:
-            prediction = model.predict(filename = path, plant = plant)
-        except:
-            print("-----------------Putting sleep mode----------------")
-            sleep(4)
-            print("-----------------Offing sleep mode----------------")
-            prediction = model.predict(filename = path, plant = plant)
-        
+        prediction = predicting(filename = path, plant = plant)
+
         print(prediction)
         model.remove_it(path)
     return {"File": file.filename, "predicted": prediction}
