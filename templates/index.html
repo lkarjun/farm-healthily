@@ -55,6 +55,33 @@
     </section>
     <!-- ------------Landing page ending ------------ -->
 
+    <!-- about -->
+
+    <section class="section-about p-3 m-4">
+
+        <div class="container text-center">
+            <div class="jumbotron">
+                <h1 class="display-7"  style="font-family: 'Roboto Slab', serif;">Why FarmHealthily</h1>
+                <hr/>
+                <p class="lead text-start">
+                    Chilli leaf curl virus (ChiLCV) is a DNA virus from the genus Begomovirus and the family Geminiviridae. 
+                    ChiLCV causes severe disease especially in pepper (Capsicum spp.), but also affects other crops such 
+                    as tomato (Solanum lycopersicum).[1] It can be found in tropical and subtropical regions primarily in
+                    India, but has also been detected in countries such as Indonesia and Sri Lanka.[2] This virus is 
+                    transmitted by an insect vector from the family Aleyrodidae and order Hemiptera, the whitefly Bemisia 
+                    tabaci. The primary host for ChiLCV are several Capsicum spp., but host species also include tomato and 
+                    amaranth.[1][3] ChiLCV has been responsible for several epidemics and causes severe economic losses. 
+                    It is the focus of research trying to understand the genetic basis of resistance. Currently, a few 
+                    sources of resistance have been discovered and used to breed resistant varieties.[2]
+                </p>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- about ending -->
+
+
     <!-- ------------ Image uploading part ------------ -->
     <section class="m-4 p-4" style="background-color: rgb(238, 238, 238);" id = "classify">
 
@@ -129,6 +156,35 @@
 
     <!-- ------------Image uploading part ending ------------ -->
 
+    <!-- Recommadations-->
+
+    <section>
+
+        <div class="pt-3" id = 'rem' style="display: none;">
+        
+        <div class="container text-center">
+            <div class="jumbotron">
+                <h2 class="display-10"  style="font-family: 'Roboto Slab', serif;">Details about the virus.</h2>
+                <hr/>
+
+                <table class="table table-responsive table-dark">
+                    <tr><th class="text-success font-weight-bold">Plant</th><th class="text-success font-weight-bold">Type of Virus</th></tr>
+                    <tr class="bg-danger"><td id='plant'></td> <td id='type'></td></tr>
+                    <tr><td colspan="2" class="text-center text-success font-weight-bold">Remark</td></tr>
+                    <tr><td colspan="2"></td></tr>
+                </table>
+
+
+                <!-- <h2 class = 'display-10' style="font-family: 'Roboto Slab', serif;">Treatment</h2>
+                <hr> -->
+            </div>
+        </div>
+        
+        </div>
+        
+    </section>
+
+    <!-- Recommandations end-->
 
     <!-- ---------------Footer------------ -->
     <footer class="ftco-footer ftco-bg-dark ftco-section" style="background-color:rgb(65, 65, 65); color: white;">
@@ -169,11 +225,17 @@ $(function() {
             success: function(data) {
                 console.log("request posted");
                 console.log(data);
-                document.getElementById('predicted_display').style = "display: block"
+                document.getElementById('predicted_display').style = "display: block";
                 document.getElementById('spinner').style = "display: none";
                 document.getElementById('predicted').innerHTML = "Discovered that the "+plant+" leaf is a " + data.predicted + " leaf.";
-                document.getElementById('selector').style = "display: none"
+                document.getElementById('selector').style = "display: none";
                 document.getElementById('classify-again').style = 'display: block';
+
+                if(data.predicted.toLowerCase() != "healthy"){
+                    $('#rem').css('display', 'block');
+                    $('#plant').html(plant.toUpperCase());
+                    $('#type').html(data.predicted.toUpperCase());
+                }
             },
             error: function(err){
                 document.getElementById('spinner').style = "display: none";
@@ -181,6 +243,7 @@ $(function() {
                 document.getElementById('classify-again').innerHTML = "Try Again";
                 document.getElementById('alert-on-falied').style = 'display: block'
             }
+        
         });
     });
 });
