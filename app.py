@@ -11,7 +11,7 @@ templates = Jinja2Templates(directory='templates')
 model = None
 
 def model_load():
-    print("-------------importing module-------------")
+    print("-------------importing module right now-------------")
     global model
     from model_load import LoadModel
     model = LoadModel()

@@ -9,7 +9,9 @@ class LoadModel:
         models_plant = {'tomato': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/tomato.pkl?raw=true',
                     'grapes': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/grapes.pkl?raw=true',
                     'potato': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/potato.pkl?raw=true',
-                    'strawberry': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/Strawberry.pkl?raw=true'}
+                    'strawberry': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/Strawberry.pkl?raw=true',
+                       'peach': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/peach.pkl?raw=true',
+                       'cherry': 'https://github.com/lkarjun/fastai-workouts/blob/master/models/cherry.pkl?raw=true'}
 
         if path.exists(f'{plant}.pkl') == False:
             url = models_plant[plant]
