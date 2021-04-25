@@ -160,6 +160,16 @@
 
     <section>
 
+        <div class="pt-3" id='safe' style="display: none;">
+
+            <div class="container text-center">
+                <div class="jumbotron">
+                    <h5 class="display-6 text-primary font-weight-bold" style="font-family: 'Roboto Slab', serif;">No Virus.</h5>
+                    <hr/>
+                </div>
+            </div>
+        </div>
+
         <div class="pt-3" id = 'rem' style="display: none;">
         
         <div class="container text-center">
@@ -235,6 +245,9 @@ $(function() {
                     $('#rem').css('display', 'block');
                     $('#plant').html(plant.toUpperCase());
                     $('#type').html(data.predicted.toUpperCase());
+                }
+                else{
+                    $('#safe').css('display', 'block');
                 }
             },
             error: function(err){
