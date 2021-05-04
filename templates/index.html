@@ -142,6 +142,20 @@
                     </div>
                 </form>
 
+
+
+        <!-- Upload status-->
+        <div class="pt-4 pb-4" id = 'pro' style="display: none;">
+            <h4>
+                <b>Uploading</b>
+            </h4>
+            <div class="progress" style="height: 20px;">
+                <div class="progress-bar bg-danger" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+            </div>
+        </div>
+
+        <!-- ended... -->
+
                 <div class="pt-2 mt-2" style="display: none;" id='alert-on-falied'>
                     <div class=" alert alert-danger" role="alert">
                         <strong>Extremely Sorry!</strong> We're facing some server issues. We requested you to come after 2 minutes. Or click the below button.
@@ -227,13 +241,29 @@ $(function() {
         var form_data = new FormData($('#upload-file')[0]);
         form_data.append('plant', plant);
         console.log(form_data);
+        document.getElementById('pro').style = 'display: block';
         $.ajax({
+            xhr: function() {
+                var xhr = new window.XMLHttpRequest();
+                xhr.upload.addEventListener("progress", function(evt) {
+                    if (evt.lengthComputable) {
+                        var percentComplete = Math.round((evt.loaded / evt.total) * 100);
+                        $(".progress-bar").width(percentComplete + '%');
+                        $(".progress-bar").html(percentComplete+'%');
+                    }
+                }, false);
+                return xhr;
+            },
             type: 'POST',
             url: '/uploadfile',
             data: form_data,
             contentType: false,
             cache: false,
             processData: false,
+            beforeSend: function(){
+                $(".progress-bar").width('0%');
+                $('#uploadStatus').html('<img src="images/loading.gif"/>');
+            },
             success: function(data) {
                 console.log("request posted");
                 console.log(data);
@@ -242,7 +272,7 @@ $(function() {
                 document.getElementById('predicted').innerHTML = "Discovered that the "+plant+" leaf is a " + data.predicted + " leaf.";
                 document.getElementById('selector').style = "display: none";
                 document.getElementById('classify-again').style = 'display: block';
-
+                document.getElementById('pro').style = 'display: none';
                 if(data.predicted.toLowerCase() != "healthy"){
                     $('#rem').css('display', 'block');
                     $('#plant').html(plant.toUpperCase());
@@ -256,7 +286,8 @@ $(function() {
                 document.getElementById('spinner').style = "display: none";
                 document.getElementById('classify-again').style = 'display: block';
                 document.getElementById('classify-again').innerHTML = "Try Again";
-                document.getElementById('alert-on-falied').style = 'display: block'
+                document.getElementById('alert-on-falied').style = 'display: block';
+                document.getElementById('pro').style = 'display: none';
             }
         
         });

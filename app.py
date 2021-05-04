@@ -43,7 +43,7 @@ async def create_upload_file(file: UploadFile = File(...), plant = Form(...)):
         except:
             print("-----------------Putting sleep mode----------------")
             sleep(5)
-            print("-----------------Offing sleep mode----------------")
+            print("-----------------Off sleep mode----------------")
             prediction = model.predict(filename = path, plant = plant)
         
         print(prediction)
